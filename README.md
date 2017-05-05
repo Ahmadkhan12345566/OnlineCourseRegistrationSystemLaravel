@@ -2,7 +2,7 @@
 [![Snap CI branch](https://img.shields.io/snap-ci/ThoughtWorksStudios/eb_deployer/master.svg)]() [![Scrutinizer](https://img.shields.io/scrutinizer/g/filp/whoops.svg)]()
 
 
-# OBE AUIC SYSTEM
+# OCRS AUIC SYSTEM
 
 * [Introduction](#introduction)
 * [Environment Configuration](#environment-configuration)
@@ -18,7 +18,7 @@
 
 
 ## Introduction
-This is the OBE module of education system. We are want to improve the quality of Education.
+Online Course Registration System(ocrs) the basic purpose of this project is to automate the process of course registration.
 
 ## Environment Configuration
 It is often helpful to have different configuration values based on the environment where the application is running. For example, you may wish to use a different cache driver locally than you do on your production server.
