@@ -1,3 +1,9 @@
+<?php
+if(Session::get('id') != '1'){
+    header('Location: http://127.0.0.1:8000/');
+    die();
+}
+?>
 @extends('master.index')
 @section('title', 'Departments')
 @section('css')
