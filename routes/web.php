@@ -45,9 +45,6 @@ Route::get('/remaks', function(){
 Route::get('/roles', function(){
     return view('pages.roles');
 });
-Route::get('/regcourses', function(){
-    return view('pages.regcourses');
-});
 
 Route::get('/offerdcourses', function(){
     return view('pages.offerdcourses');
