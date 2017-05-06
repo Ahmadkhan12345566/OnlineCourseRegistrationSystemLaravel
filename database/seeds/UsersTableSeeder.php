@@ -13,9 +13,9 @@ class UsersTableSeeder extends Seeder
     {
 
         //
-        DB::table('usertable')->delete();
+        DB::table('users')->delete();
         //insert some dummy records
-        DB::table('usertable')->insert(array(
+        DB::table('users')->insert(array(
             array('user_id'=>'1014','password'=>'786','user_role'=>'1'),
             array('user_id'=>'0448','password'=>'0448','user_role'=>'2'),
 

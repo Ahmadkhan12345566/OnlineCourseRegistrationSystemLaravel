@@ -18,17 +18,17 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('offer_course', function(Blueprint $table) {
+		Schema::table('offercourses', function(Blueprint $table) {
 			$table->foreign('semestersessions_id')->references('id')->on('semestersessions')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('offer_course', function(Blueprint $table) {
+		Schema::table('offercourses', function(Blueprint $table) {
 			$table->foreign('course_id')->references('id')->on('courses')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('offer_course', function(Blueprint $table) {
+		Schema::table('offercourses', function(Blueprint $table) {
 			$table->foreign('instructor_id')->references('id')->on('instructors')
 						->onDelete('restrict')
 						->onUpdate('restrict');
@@ -39,26 +39,26 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('instructors', function(Blueprint $table) {
-			$table->foreign('user_id')->references('id')->on('usertable')
+			$table->foreign('user_id')->references('id')->on('users')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('regcourses', function(Blueprint $table) {
-			$table->foreign('offer_course_id')->references('id')->on('offer_course')
+		Schema::table('reg_courses', function(Blueprint $table) {
+			$table->foreign('offer_course_id')->references('id')->on('offercourses')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('regcourses', function(Blueprint $table) {
+		Schema::table('reg_courses', function(Blueprint $table) {
 			$table->foreign('status_id')->references('id')->on('statuses')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('regcourses', function(Blueprint $table) {
+		Schema::table('reg_courses', function(Blueprint $table) {
 			$table->foreign('remark_id')->references('id')->on('remarks')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('regcourses', function(Blueprint $table) {
+		Schema::table('reg_courses', function(Blueprint $table) {
 			$table->foreign('student_id')->references('id')->on('students')
 						->onDelete('restrict')
 						->onUpdate('restrict');
@@ -69,11 +69,11 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('students', function(Blueprint $table) {
-			$table->foreign('user_id')->references('id')->on('usertable')
+			$table->foreign('user_id')->references('id')->on('users')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('usertable', function(Blueprint $table) {
+		Schema::table('users', function(Blueprint $table) {
 			$table->foreign('user_role')->references('id')->on('roles')
 						->onDelete('restrict')
 						->onUpdate('restrict');
@@ -88,14 +88,14 @@ class CreateForeignKeys extends Migration {
 		Schema::table('courses', function(Blueprint $table) {
 			$table->dropForeign('courses_program_id_foreign');
 		});
-		Schema::table('offer_course', function(Blueprint $table) {
-			$table->dropForeign('offer_course_semestersessions_id_foreign');
+		Schema::table('offercourses', function(Blueprint $table) {
+			$table->dropForeign('offercourses_semestersessions_id_foreign');
 		});
-		Schema::table('offer_course', function(Blueprint $table) {
-			$table->dropForeign('offer_course_course_id_foreign');
+		Schema::table('offercourses', function(Blueprint $table) {
+			$table->dropForeign('offercourses_course_id_foreign');
 		});
-		Schema::table('offer_course', function(Blueprint $table) {
-			$table->dropForeign('offer_course_instructor_id_foreign');
+		Schema::table('offercourses', function(Blueprint $table) {
+			$table->dropForeign('offercourses_instructor_id_foreign');
 		});
 		Schema::table('instructors', function(Blueprint $table) {
 			$table->dropForeign('instructors_department_id_foreign');
@@ -103,17 +103,17 @@ class CreateForeignKeys extends Migration {
 		Schema::table('instructors', function(Blueprint $table) {
 			$table->dropForeign('instructors_user_id_foreign');
 		});
-		Schema::table('regcourses', function(Blueprint $table) {
-			$table->dropForeign('regcourses_offer_course_id_foreign');
+		Schema::table('reg_courses', function(Blueprint $table) {
+			$table->dropForeign('reg_courses_offer_course_id_foreign');
 		});
-		Schema::table('regcourses', function(Blueprint $table) {
-			$table->dropForeign('regcourses_status_id_foreign');
+		Schema::table('reg_courses', function(Blueprint $table) {
+			$table->dropForeign('reg_courses_status_id_foreign');
 		});
-		Schema::table('regcourses', function(Blueprint $table) {
-			$table->dropForeign('regcourses_remark_id_foreign');
+		Schema::table('reg_courses', function(Blueprint $table) {
+			$table->dropForeign('reg_courses_remark_id_foreign');
 		});
-		Schema::table('regcourses', function(Blueprint $table) {
-			$table->dropForeign('regcourses_student_id_foreign');
+		Schema::table('reg_courses', function(Blueprint $table) {
+			$table->dropForeign('reg_courses_student_id_foreign');
 		});
 		Schema::table('students', function(Blueprint $table) {
 			$table->dropForeign('students_program_id_foreign');
@@ -121,8 +121,8 @@ class CreateForeignKeys extends Migration {
 		Schema::table('students', function(Blueprint $table) {
 			$table->dropForeign('students_user_id_foreign');
 		});
-		Schema::table('usertable', function(Blueprint $table) {
-			$table->dropForeign('usertable_user_role_foreign');
+		Schema::table('users', function(Blueprint $table) {
+			$table->dropForeign('users_user_role_foreign');
 		});
 	}
 }

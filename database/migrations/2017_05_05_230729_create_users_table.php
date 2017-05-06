@@ -3,11 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateUsertableTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('usertable', function(Blueprint $table) {
+		Schema::create('users', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
@@ -19,6 +19,6 @@ class CreateUsertableTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('usertable');
+		Schema::drop('users');
 	}
 }

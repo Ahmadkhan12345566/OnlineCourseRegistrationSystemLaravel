@@ -12,21 +12,21 @@ class OfferCoursesTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('offer_course')->delete();
+        DB::table('offercourses')->delete();
         //insert some dummy records
-        DB::table('offer_course')->insert(array(
-            array('semestersessions_id'=>'1','course_id'=>'1','instructor_id'=>'1'),
-            array('semestersessions_id'=>'1','course_id'=>'2','instructor_id'=>'2'),
-            array('semestersessions_id'=>'1','course_id'=>'3','instructor_id'=>'2'),
-            array('semestersessions_id'=>'1','course_id'=>'4','instructor_id'=>'1'),
-            array('semestersessions_id'=>'1','course_id'=>'5','instructor_id'=>'2'),
-            array('semestersessions_id'=>'1','course_id'=>'6','instructor_id'=>'1'),
-            array('semestersessions_id'=>'5','course_id'=>'1','instructor_id'=>'1'),
-            array('semestersessions_id'=>'5','course_id'=>'2','instructor_id'=>'2'),
-            array('semestersessions_id'=>'5','course_id'=>'3','instructor_id'=>'1'),
-            array('semestersessions_id'=>'5','course_id'=>'4','instructor_id'=>'1'),
-            array('semestersessions_id'=>'5','course_id'=>'5','instructor_id'=>'2'),
-            array('semestersessions_id'=>'5','course_id'=>'6','instructor_id'=>'2')
+        DB::table('offercourses')->insert(array(
+            array('semestersessions_id'=>'1','course_id'=>'1','instructor_id'=>'1','program_id'=>'1'),
+            array('semestersessions_id'=>'1','course_id'=>'2','instructor_id'=>'2','program_id'=>'1'),
+            array('semestersessions_id'=>'1','course_id'=>'3','instructor_id'=>'2','program_id'=>'1'),
+            array('semestersessions_id'=>'1','course_id'=>'4','instructor_id'=>'1','program_id'=>'1'),
+            array('semestersessions_id'=>'1','course_id'=>'5','instructor_id'=>'2','program_id'=>'1'),
+            array('semestersessions_id'=>'1','course_id'=>'6','instructor_id'=>'1','program_id'=>'1'),
+            array('semestersessions_id'=>'5','course_id'=>'1','instructor_id'=>'1','program_id'=>'1'),
+            array('semestersessions_id'=>'5','course_id'=>'2','instructor_id'=>'2','program_id'=>'1'),
+            array('semestersessions_id'=>'5','course_id'=>'3','instructor_id'=>'1','program_id'=>'1'),
+            array('semestersessions_id'=>'5','course_id'=>'4','instructor_id'=>'1','program_id'=>'1'),
+            array('semestersessions_id'=>'5','course_id'=>'5','instructor_id'=>'2','program_id'=>'1'),
+            array('semestersessions_id'=>'5','course_id'=>'6','instructor_id'=>'2','program_id'=>'1')
 
         ));
 

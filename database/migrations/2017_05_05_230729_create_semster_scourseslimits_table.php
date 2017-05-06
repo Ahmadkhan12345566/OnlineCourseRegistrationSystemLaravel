@@ -3,11 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSemstercourseslimitTable extends Migration {
+class CreateSemsterScourseslimitsTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('semstercourseslimit', function(Blueprint $table) {
+		Schema::create('semster_scourseslimits', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
@@ -18,6 +18,6 @@ class CreateSemstercourseslimitTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('semstercourseslimit');
+		Schema::drop('semster_scourseslimits');
 	}
 }
