@@ -59,6 +59,12 @@
                     </a>
                 </div>
                 <!-- /.col -->
+                @if(true)
+                    <div class="text-danger">
+                        <p>{{ session('invalid') }}</p>
+                    </div>
+                @endif
+
             </div>
         </form>
 

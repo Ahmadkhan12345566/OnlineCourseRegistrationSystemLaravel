@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-    //
-
-
 
     public function validatee(Request $request)
     {
@@ -22,7 +19,7 @@ class LoginController extends Controller
         $data = Users::all()->where('user_id', $request->user_id);
         //var_dump($data);
         if ($data->isEmpty()) {
-            return view('Home.index', compact('data'));
+            return redirect('/')->with('invalid','Incorrect username and password!');
         }
         else
         {
