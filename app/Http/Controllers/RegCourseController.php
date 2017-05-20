@@ -39,27 +39,30 @@ public function show(){
         $this->regcourses=RegCourse::all()->where('student_id','=',$this->student->id);
 
         $data= $this->regcourses;
+        //$dataa=$this->offerdcourses;
 
 
-        $test=Statuse::all();
-
-        //$this->Find_offerd_courses();
+//      var_dump("sadad");
+        $this->Find_offerd_courses();
         //return response()->json($test);
-
-        return view('pages.regcourses', compact('data'));
+//        $this->Check_Fail_Courses();
+  //      return view('pages.regcourses', compact('data'),compact('$dataa'));
 
         //$json =  json_encode($this->genrated_offerd_courses);
         //var_dump($json);
     }
 
     public function Find_offerd_courses(){
-        $this->Check_Fail_Courses();
-        $this->Find_last_Session();
-        $this->Find_Offers_Courses_last_Session();
-        $this->GenrateCoursesFromOfferd();
+
+    //var_dump("i m offered_course");
+      //  $this->Check_Fail_Courses();
+       $this->Find_last_Session();
+       $this->Find_Offers_Courses_last_Session();
+       $this->GenrateCoursesFromOfferd();
     }
 
     public function Check_Fail_Courses(){
+      //  echo "i m check_failcourse";
 
         $this->offerdcourses=RegCourse::all()->where('student_id', '=', $this->student->id)->where('status_id' , '=', 2);
 
@@ -81,7 +84,7 @@ public function show(){
     }
     public function GenrateCoursesFromOfferd(){
 
-        //$this->last_session_offerd_course=Offercourse::all()->where('semestersessions_id', '=', $this->last_session->id)->where('program_id' , '=', 1);
+
         $this->Get_All_From_Course();
         foreach ($this->course_limit_in_semester as $course_limit_value) {
             $conutre=0;
@@ -92,16 +95,17 @@ public function show(){
 
                $id = $regcrs->offer_course->course_id;
                $semester=Course::all()->where('id', '=', $id)->first()->semester_id;
+
                if ($semester==$course_limit_value->semseter_num) {
                    $conutre=$conutre+1;
                }
-              // var_dump($conutre);
+
 
            }
 
-         //  var_dump($course_limit_value->semster_c_L);
-           if($conutre<=$course_limit_value->semster_c_L){
-             //
+
+           if($conutre<$course_limit_value->semster_c_L){
+
                $this->offer_semster_course = null;
                $this->offer_semster_course = array();
                $this->reg_semester_course = null;
@@ -118,104 +122,84 @@ public function show(){
     public function offer_remning_crs_semester($semester){
 
        $this->semser_course_from_regcourses($semester);
+
+
+
        $this->semser_course_from_offercourses($semester);
-
-
-
+echo " &nbsp; &nbsp;  &nbsp; &nbsp;ffercourses  <br> <br>";
+$json = json_encode($this->offer_semster_course);
+        var_dump($json);
+echo "<br> <br>  ";
+        echo " &nbsp; &nbsp;  &nbsp; &nbsp;Pre of courses ";
         foreach ($this->offer_semster_course as $offercrs) {
             $iid = $offercrs->course_id;
             $offer_code=Course::all()->where('id', '=', $iid)->first()->code;
-            if($semester==2) {
-                $json = json_encode($offer_code);
-                //var_dump($json);
-            }
+
+
+
             $check=1;
+
             foreach ($this->reg_semester_course as $regcrs) {
                 $id = $regcrs->offer_course->course_id;
                 $reg_code=Course::all()->where('id', '=', $id)->first()->code;
-           if($semester==2) {
-               $json = json_encode($reg_code);
-               echo "<br>";
-               var_dump($json);
 
-           }
+
+
                 if( $offer_code==$reg_code){
                     $check=$check+1;
-
-
-                    break;
+                  break;
                 }
 
 
             }
-
-
-
 
             if($check==1){
                 $iid = $offercrs->course_id;
                 $chekprerak=Course::all()->where('id', '=', $iid)->first()->prereq_id;
 
-              /*  if($semester==2) {
-                    //$json = json_encode( $check);
-                    echo "<br>";
-                    //var_dump($chekprerak);
-                    echo "<br>";
-
-                }*/
 
 
-                if($chekprerak==empty($chekprerak)){
-                    echo "asdsada";
-                    array_push($this->genrated_offerd_courses, $offercrs);
 
+
+                if($chekprerak== ""){
+                    // echo " i am in no prerack ";
+                     array_push($this->genrated_offerd_courses, $offercrs);
+
+                 }
+                 else {
+                     //echo "in else";
+
+                     foreach ($this->regcourses as $regcrss) {
+                         $id = $regcrss->offer_course->course_id;
+                         $regg_crs = Course::all()->where('id', '=', $id)->first()->id;
+
+                         //=Course::all()->where('id', '=', $id)->first()->course_id;
+//$regg_status=null;
+                         $regg_status = RegCourse::all()->where('id', '=', $regcrss->id)->first()->status_id;
+
+
+
+                         // var_dump(json_encode($regg_status[0]->status_id));
+
+
+                         if( $chekprerak==$regg_crs&&$regg_status==1){
+echo"i am hear";
+                        array_push($this->genrated_offerd_courses, $offercrs);
+                         }
+
+                     }
+                 }
                 }
-                else
-                    {
-                       //echo "in else";
 
-                        foreach ($this->regcourses as $regcrss){
-                           // var_dump($this->regcourses);
-
-                            $json = json_encode($regcrss);
-        //                    var_dump($json);
-                            $iid = $offercrs->course_id;
-
-                        $chekprerakk=Course::all()->where('id', '=', $iid)->first()->prereq_id;
-                           echo "<br> ";
-                           // var_dump(json_encode($chekprerakk));
-                            echo "<br>";
-
-
-                            $id =$regcrss->offer_course->course_id;
-                        //    var_dump('There is id : '. $id);
-                        $regg_crs=Course::all()->where('id', '=', $id)->toJson();
-                           //var_dump(var_dump($regg_crs));
-                           // var_dump();
-                        //=Course::all()->where('id', '=', $id)->first()->course_id;
-
-                        $regg_status=RegCourse::all()->where('id','=',$regcrss->id);
-                      // var_dump(json_encode($regg_status[0]->status_id));
-                            echo "<br>";
-                           // var_dump(json_encode($chekprerakk));
-                           // var_dump(json_encode($regg_crs[0]->id));
-                            echo "<br>";
-                            //var_dump(json_encode($regg_status[0]->status_id));
-
-                          /*  if( $chekprerakk==$regg_crs[0]->id&&$regg_status[0]->status_id==1){
-
-                            array_push($this->genrated_offerd_courses, $offercrs);
-                         }*/
-                            echo "<br>";
-                            //var_dump($this->genrated_offerd_courses);
-                            echo "<br>";
-                    }
-                }
             }
+        echo" <br> Checking this <br>";
+        $json = json_encode($this->genrated_offerd_courses);
+        var_dump($json);
+
         }
 
 
-    }
+
 
     public function semser_course_from_regcourses($semester){
 

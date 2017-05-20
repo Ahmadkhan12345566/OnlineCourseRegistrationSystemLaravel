@@ -18,8 +18,8 @@ class RegCoursesTableSeeder extends Seeder
         DB::table('reg_courses')->insert(array(
             array('offer_course_id'=>'1','status_id'=>'1','remark_id'=>'1','student_id'=>'1'),
             array('offer_course_id'=>'2','status_id'=>'1','remark_id'=>'1','student_id'=>'1'),
-            array('offer_course_id'=>'3','status_id'=>'2','remark_id'=>'1','student_id'=>'1'),
-            array('offer_course_id'=>'4','status_id'=>'2','remark_id'=>'1','student_id'=>'1'),
+            array('offer_course_id'=>'3','status_id'=>'1','remark_id'=>'1','student_id'=>'1'),
+            array('offer_course_id'=>'4','status_id'=>'1','remark_id'=>'1','student_id'=>'1'),
 
         ));
     }

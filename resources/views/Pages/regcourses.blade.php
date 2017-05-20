@@ -21,16 +21,6 @@
                     <th>Remarks</th>
                 </tr>
 
-
-                    <tr>
-                        <td>1</td>
-                        <td>ITP</td>
-                        <td>intro to computing</td>
-                        <td>4</td>
-                        <td>pass</td>
-                        <td>R-0</td>
-
-                    </tr>
                 <?php $order = 0; ?>
 
                 @foreach($data as $key)
