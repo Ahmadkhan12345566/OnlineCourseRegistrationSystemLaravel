@@ -25,8 +25,8 @@ class OfferCoursesTableSeeder extends Seeder
             array('semestersessions_id'=>'5','course_id'=>'2','instructor_id'=>'2','program_id'=>'1'),
             array('semestersessions_id'=>'5','course_id'=>'3','instructor_id'=>'1','program_id'=>'1'),
             array('semestersessions_id'=>'5','course_id'=>'4','instructor_id'=>'1','program_id'=>'1'),
-            array('semestersessions_id'=>'5','course_id'=>'5','instructor_id'=>'2','program_id'=>'1'),
-           array('semestersessions_id'=>'5','course_id'=>'6','instructor_id'=>'2','program_id'=>'1'),
+            array('semestersessions_id'=>'5','course_id'=>'5','instructor_id'=>'1','program_id'=>'1'),
+            array('semestersessions_id'=>'5','course_id'=>'6','instructor_id'=>'2','program_id'=>'1'),
             array('semestersessions_id'=>'5','course_id'=>'7','instructor_id'=>'2','program_id'=>'1')
 
         ));

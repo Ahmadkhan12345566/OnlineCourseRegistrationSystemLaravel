@@ -47,22 +47,12 @@ class LoginController extends Controller
 
                      }
                      elseif ($user->user_role==3){
-                           $student=Student::all()->where('user_id','=',$user->id)->first();
-                            $regcourses=RegCourse::all()->where('student_id','=',$student->id);
-                            //regcours find of a student
-
-                         $data= $regcourses;
 
 
-                         //$cours=Course::all();
-                      //  var_dump($cours);
-                         //return response()->json($data);
-                         $students=Student::all();
 
-                         //return redirect('regcourses');
-                         return view('pages.regcourses', compact('data'));
-                         //redirect()
-                         //return view('pages.regcourses', compact('data'));
+
+                         return redirect('/regcourses');
+
                      }
                 }
                 else

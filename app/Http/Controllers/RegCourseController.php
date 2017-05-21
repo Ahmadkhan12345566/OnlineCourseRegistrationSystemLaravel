@@ -29,24 +29,15 @@ public function show(){
       //  return response()->json( Session::get('u_id'));
 
         $user = Session::get('u_id');
-
-
-    //    var_dump();
-
-
-
         $this->student=Student::all()->where('user_id','=',$user)->first();
         $this->regcourses=RegCourse::all()->where('student_id','=',$this->student->id);
-
+    $this->Find_offerd_courses();
         $data= $this->regcourses;
-        //$dataa=$this->offerdcourses;
+        $dataa=$this->genrated_offerd_courses;
 
-
-//      var_dump("sadad");
-        $this->Find_offerd_courses();
         //return response()->json($test);
 //        $this->Check_Fail_Courses();
-  //      return view('pages.regcourses', compact('data'),compact('$dataa'));
+        return view('pages.regcourses', compact('data'),compact('dataa'));
 
         //$json =  json_encode($this->genrated_offerd_courses);
         //var_dump($json);
@@ -55,9 +46,11 @@ public function show(){
     public function Find_offerd_courses(){
 
     //var_dump("i m offered_course");
-      //  $this->Check_Fail_Courses();
-       $this->Find_last_Session();
-       $this->Find_Offers_Courses_last_Session();
+        $this->Find_last_Session();
+        $this->Find_Offers_Courses_last_Session();
+        $this->Check_Fail_Courses();
+
+
        $this->GenrateCoursesFromOfferd();
     }
 
@@ -65,6 +58,34 @@ public function show(){
       //  echo "i m check_failcourse";
 
         $this->offerdcourses=RegCourse::all()->where('student_id', '=', $this->student->id)->where('status_id' , '=', 2);
+
+      foreach ($this->offerdcourses as $crsss_fail){
+
+
+
+          //$fail_crs_D = $this->last_session_offerd_course->findwhere();
+         // $fail_crs_D =    Offercourse::all()->where('semestersessions_id', '=', $this->last_session->id)->where('course_id' , '=', $crsss->offer_course->course_id);
+        //  $fail_crs_put= Offercourse::all()->where('','',);
+         // if($fail_crs_D!=null){
+          //    array_push($this->genrated_offerd_courses, $fail_crs_D);
+          //}
+          foreach ($this->last_session_offerd_course as $crsss_agin){
+              if($crsss_fail->offer_course->course_id==$crsss_agin->course_id){
+               //   $fail_crs_D= $crsss_agin;
+                  array_push($this->genrated_offerd_courses, $crsss_agin);
+                  echo" <br> Checking this <br>";
+                    $json = json_encode(  $crsss_agin);
+                  var_dump($json);
+              }
+          }
+
+
+
+
+      }
+
+
+
 
     }
     public function Find_last_Session(){
@@ -126,11 +147,6 @@ public function show(){
 
 
        $this->semser_course_from_offercourses($semester);
-echo " &nbsp; &nbsp;  &nbsp; &nbsp;ffercourses  <br> <br>";
-$json = json_encode($this->offer_semster_course);
-        var_dump($json);
-echo "<br> <br>  ";
-        echo " &nbsp; &nbsp;  &nbsp; &nbsp;Pre of courses ";
         foreach ($this->offer_semster_course as $offercrs) {
             $iid = $offercrs->course_id;
             $offer_code=Course::all()->where('id', '=', $iid)->first()->code;
@@ -183,7 +199,7 @@ echo "<br> <br>  ";
 
 
                          if( $chekprerak==$regg_crs&&$regg_status==1){
-echo"i am hear";
+
                         array_push($this->genrated_offerd_courses, $offercrs);
                          }
 
@@ -192,10 +208,12 @@ echo"i am hear";
                 }
 
             }
-        echo" <br> Checking this <br>";
+
+        echo " &nbsp; &nbsp;  &nbsp; &nbsp;<br>0ffercourses  <br> <br>";
         $json = json_encode($this->genrated_offerd_courses);
         var_dump($json);
-
+        echo "<br> <br>  ";
+        echo " &nbsp; &nbsp;  &nbsp; &nbsp;Pre of courses ";
         }
 
 

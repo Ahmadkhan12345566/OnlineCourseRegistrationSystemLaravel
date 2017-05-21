@@ -32,14 +32,17 @@
                                 $id = $key->offer_course->course_id;
                             echo \App\Course::all()->where('id', '=', $id)->first()->code;
                             ?>
-                        </td> <td><?php
+                        </td>
+                        <td><?php
                                 $id = $key->offer_course->course_id;
                             echo \App\Course::all()->where('id', '=', $id)->first()->title;
                             ?>
-                        </td> <td><?php
+                        </td>
+                        <td><?php
                                 $id = $key->offer_course->course_id;
                             echo \App\Course::all()->where('id', '=', $id)->first()->credit_hours;
-                            ?></td>
+                            ?>
+                        </td>
                         <td>{{ $key->status->title }}</td>
                         <td>{{ $key->remark->title }}</td>
 
@@ -82,16 +85,42 @@
                             </tr>
 
 
+
+                            <?php $order = 0; ?>
+                            @foreach($dataa as $key)
                             <tr>
-                                <td>1</td>
-                                <td>ITP</td>
-                                <td>intro to computing</td>
-                                <td>4</td>
-                                <td>Asad Hanif</td>
+                                <td>{{ ++$order }}</td>
+                                <td>
+                                    <?php
+                                    $id = $key->course_id;
+                                    echo \App\Course::all()->where('id', '=', $id)->first()->code;
+                                    ?>
+
+                                </td>
+                                <td>
+                                    <?php
+                                    $id = $key->course_id;
+                                    echo \App\Course::all()->where('id', '=', $id)->first()->title;
+                                    ?>
+                                </td>
+                                <td><?php
+                                    $id = $key->course_id;
+                                    echo \App\Course::all()->where('id', '=', $id)->first()->credit_hours;
+                                    ?></td>
+                                <td>
+
+                                    <?php
+                                    $id = $key->instructor_id;
+                                    echo \App\Instructor::all()->where('id', '=', $id)->first()->name;
+                                    ?>
+
+
+                                </td>
                                 <td><input type="checkbox" aria-label="..."></td>
 
 
                             </tr>
+                            @endforeach
 
 
                         </table>
