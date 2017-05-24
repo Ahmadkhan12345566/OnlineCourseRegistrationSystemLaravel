@@ -11,7 +11,47 @@
 @section('page_content_section')
     <div class="panel panel-default">
         <div class="panel-body">
-            <p>Total offerdcourses are <span>0</span></p>
+
+
+            <table class="table">
+
+                <tr>
+                    <td>
+                            <label for="exampleSelect1">Program</label>
+                            <select  id="exampleSelect1">
+                                <option>Computing science</option>
+                                <option>Electrical eng</option>
+                            </select>
+                        </td>
+                    <td>
+                        <label for="exampleSelect1">Session</label>
+                        <select  id="exampleSelect1">
+                            <option>Summer2016</option>
+                            <option>Fall2017</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <label for="exampleSelect1">action</label>
+                        <select  id="exampleSelect1">
+                            <option>Offered</option>
+                            <option>All courses</option>
+                        </select>
+                    </td>
+                    <td>
+                        <a href="#">
+                            <button class="btn btn-default" title="edit"><i class="fa fa-search"></i></button>
+                        </a>
+                    </td>
+
+
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="panel-body">
+            <h2>Total courses are <span>0</span></h2>
             <table class="table">
                 <tr>
                     <th>#</th>

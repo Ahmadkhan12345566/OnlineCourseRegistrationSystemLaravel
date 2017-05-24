@@ -73,9 +73,9 @@ public function show(){
               if($crsss_fail->offer_course->course_id==$crsss_agin->course_id){
                //   $fail_crs_D= $crsss_agin;
                   array_push($this->genrated_offerd_courses, $crsss_agin);
-                  echo" <br> Checking this <br>";
-                    $json = json_encode(  $crsss_agin);
-                  var_dump($json);
+                 // echo" <br> Checking this <br>";
+                   // $json = json_encode(  $crsss_agin);
+                  //var_dump($json);
               }
           }
 
@@ -209,11 +209,11 @@ public function show(){
 
             }
 
-        echo " &nbsp; &nbsp;  &nbsp; &nbsp;<br>0ffercourses  <br> <br>";
-        $json = json_encode($this->genrated_offerd_courses);
-        var_dump($json);
-        echo "<br> <br>  ";
-        echo " &nbsp; &nbsp;  &nbsp; &nbsp;Pre of courses ";
+        //echo " &nbsp; &nbsp;  &nbsp; &nbsp;<br>0ffercourses  <br> <br>";
+        //$json = json_encode($this->genrated_offerd_courses);
+        //var_dump($json);
+        ///echo "<br> <br>  ";
+       // echo " &nbsp; &nbsp;  &nbsp; &nbsp;Pre of courses ";
         }
 
 

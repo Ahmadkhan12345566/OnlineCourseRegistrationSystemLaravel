@@ -10,7 +10,7 @@
 @section('page_content_section')
     <div class="panel panel-default">
         <div class="panel-body">
-            <p>Total Registered courses are <span>0</span></p>
+            <p>Total Registered courses are <span class="text-bold">{{ sizeof($data) }}</span></p>
             <table class="table">
                 <tr>
                     <th>#</th>
@@ -65,14 +65,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add New Status</h5>
+                    <h5 class="modal-title"><b>Your Offerd Courses Are</b></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form>
                     <div class="panel-body">
-                        <p>Total Registered courses are <span>0</span></p>
+                        <p>Total Registered courses are <span class="text-bold">{{ sizeof($dataa) }}</span></p>
                         <table class="table">
                             <tr>
                                 <th>#</th>
