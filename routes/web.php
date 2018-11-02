@@ -20,7 +20,7 @@ use App\Department;
 
 ### Welcome Section
 Route::get('/', function () {
-    return view('home.index');
+    return view('Home.index');
 });
 
 Route::get('/home', function(){
