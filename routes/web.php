@@ -31,23 +31,23 @@ Route::get('/user', function(){
 });
 
 Route::get('/user', function(){
-    return view('pages.user');
+    return view('Pages.user');
 });
 
 Route::get('/status', function(){
-    return view('pages.status');
+    return view('Pages.status');
 });
 
 Route::get('/remaks', function(){
-    return view('pages.remaks');
+    return view('Pages.remaks');
 });
 
 Route::get('/roles', function(){
-    return view('pages.roles');
+    return view('Pages.roles');
 });
 
 Route::get('/offerdcourses', function(){
-    return view('pages.offerdcourses');
+    return view('Pages.offerdcourses');
 });
 
 ### Regcourses Section
