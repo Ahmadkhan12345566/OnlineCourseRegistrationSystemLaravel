@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function(){
-    return view('home.index');
+    return view('Home.index');
 });
 Route::get('/user', function(){
     return view('user.login');
